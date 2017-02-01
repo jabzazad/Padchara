@@ -1,0 +1,108 @@
+package card;
+//5930213031 Padchara Teeduang 
+
+import java.util.Scanner;
+public class Card {
+
+    String id, name, type;
+    int point, pointcheck;
+    double re, amount, total, totals, check;
+
+    Card(String i, String nam, String typ, int poin) {
+        id = i;
+        name = nam;
+        type = typ;
+        point = poin;
+    }
+
+    public void printCardDetail() {
+        point = point + pointcheck;
+        System.out.println("=============================================");
+        System.out.println("CARD_ID\tName\tType\tVisa\tPoint");
+        System.out.println("=============================================");
+        System.out.println(id + "\t" + name + "\t" + type + "\t" + point);
+        System.out.println("=============================================");
+    }
+
+    public double discountRate() {
+        if (type.equalsIgnoreCase("visa")) {
+            re = 0.05;
+        } else if (type.equalsIgnoreCase("master")) {
+            re = 0.03;
+        } else {
+            re = 0;
+        }
+        return re;
+    }
+
+    public void addPoint(double total) {
+        pointcheck = point;
+        point = (int) (total / 25);
+    }
+
+    public static void main(String[] args) {
+        Card John = new Card("122455111111111", "John Smith", "Visa", 10); 
+        Card peter = new Card("122455111111333", "Peter Bishof", "Debit", 200);
+        John.printCardDetail();
+        peter.printCardDetail();
+        System.out.println("** Calculate discount and point for John **");
+        Scanner ip = new Scanner(System.in);
+        System.out.print("Enter amount: ");
+        John.amount = ip.nextInt();
+        John.check = (John.amount * John.discountRate());
+        System.out.println("Discount = " + John.check);
+        John.totals = (John.amount - John.check);
+        System.out.println("Total =" + (John.amount - John.check));
+        John.addPoint(John.totals);
+        System.out.println("Point earnedd = " + John.point);
+        System.out.println("OutStanding points = " + (John.pointcheck + John.point));
+        John.printCardDetail(); //สิ้นสุดoopของjohn
+        System.out.println("** Calculate discount and point for John **");
+        System.out.print("Enter amount: ");
+        peter.amount = ip.nextInt();
+        peter.check = (peter.amount * peter.discountRate());
+        System.out.println("Discount = " + peter.check);
+        peter.totals = (peter.amount - peter.check);
+        System.out.println("Total =" + (peter.amount - peter.check));
+        peter.addPoint(peter.totals);
+        System.out.println("Point earnedd = " + peter.point);
+        System.out.println("OutStanding points = " + (peter.pointcheck + peter.point));
+        peter.printCardDetail(); //สิ้นสุดนoopของpeter
+    }
+
+}
+/*
+result
+=============================================
+CARD_ID	Name	Type	Visa	Point
+=============================================
+122455111111111	John Smith	Visa	10
+=============================================
+=============================================
+CARD_ID	Name	Type	Visa	Point
+=============================================
+122455111111333	Peter Bishof	Debit	200
+=============================================
+** Calculate discount and point for John **
+Enter amount: 1000
+Discount = 50.0
+Total =950.0
+Point earnedd = 38
+OutStanding points = 48
+=============================================
+CARD_ID	Name	Type	Visa	Point
+=============================================
+122455111111111	John Smith	Visa	48
+=============================================
+** Calculate discount and point for John **
+Enter amount: 1000
+Discount = 0.0
+Total =1000.0
+Point earnedd = 40
+OutStanding points = 240
+=============================================
+CARD_ID	Name	Type	Visa	Point
+=============================================
+122455111111333	Peter Bishof	Debit	240
+=============================================
+ */
