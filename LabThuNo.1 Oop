@@ -1,0 +1,31 @@
+import java.util.Scanner; //overload
+public class Shape {
+int area,width,height;
+public void calculateArea(int wid){
+    area=wid*4;
+    System.out.println("A square shape :"+"width= "+wid+" area = "+area);
+}
+public void calculateArea(double a,double b){
+    area=(int)(a*b);
+    System.out.println("A rectangle shape :width="+(int)a+" height="+(int)b+" area = "+area);
+}
+    public static void main(String[] args) {
+        Scanner ip=new Scanner(System.in);
+Shape square=new Shape();
+square.width=ip.nextInt();
+square.calculateArea(square.width);
+Shape rectangle=new Shape();
+rectangle.width=ip.nextInt();
+rectangle.height=ip.nextInt();
+rectangle.calculateArea(rectangle.width,rectangle.height);
+    }
+    
+}
+/*
+result
+5
+A square shape :width= 5 area = 20
+3
+4
+A rectangle shape :width=3 height=4 area = 12
+*/
