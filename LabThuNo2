@@ -23,7 +23,7 @@ public void calculateTax(double taxRate){
         System.out.println("Enter employee detail");
         System.out.print("id:\t  ");
         a.id=ip.nextInt();
-        ip.nextLine();
+        ip.nextLine(); //clear buffer
         System.out.print("name:\t  ");
         a.name=ip.nextLine();
         System.out.print("position: ");
