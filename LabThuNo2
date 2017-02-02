@@ -1,0 +1,62 @@
+import java.util.Scanner;
+public class Employee {
+    int id;
+    String name,position;
+    double salary,tax;
+public void getEmployeeDetail(){
+    System.out.println("=======================================================");
+    System.out.println("ID\tName\tPosition");
+    System.out.println(id+"\t"+name+"\t"+position);
+   System.out.println("=======================================================");
+   }
+
+public void calculateTax(double taxRate){
+    System.out.println("Salary: "+salary);
+    System.out.println("Tax: "+(salary*taxRate));
+    System.out.println("Net Salary: "+(salary-(salary*taxRate)));
+    System.out.println("=======================================================");
+}
+    public static void main(String[] args) {
+        Scanner ip=new Scanner(System.in);
+        Employee a=new Employee();
+        System.out.println("**** Payroll System ****");
+        System.out.println("Enter employee detail");
+        System.out.print("id:\t  ");
+        a.id=ip.nextInt();
+        ip.nextLine();
+        System.out.print("name:\t  ");
+        a.name=ip.nextLine();
+        System.out.print("position: ");
+        a.position=ip.next();
+        System.out.print("Salary:\t  ");
+        a.salary=ip.nextDouble();
+        System.out.println();
+        System.out.println();
+        System.out.print("Enter tax rate: ");
+        a.tax=ip.nextDouble();
+        System.out.println();
+        a.getEmployeeDetail();
+        a.calculateTax(a.tax);
+    }
+    
+}
+/*
+**** Payroll System ****
+Enter employee detail
+id:	  1234
+name:	  Micheal K.
+position: Programmer
+Salary:	  50000
+
+
+Enter tax rate: 0.1
+
+=======================================================
+ID	Name	Position
+1234	Micheal K.	Programmer
+=======================================================
+Salary: 50000.0
+Tax: 5000.0
+Net Salary: 45000.0
+=======================================================
+*/
